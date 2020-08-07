@@ -24,6 +24,7 @@ First fork or clone this repo:
 
 e.g. `git clone https://github.com/Sumaid/sta.git`
  
+ Download [Weights file](https://pjreddie.com/media/files/yolov3.weights) and place it in `backend/yolo_files/`
 
 ## Build images and run containers with docker-compose
 
