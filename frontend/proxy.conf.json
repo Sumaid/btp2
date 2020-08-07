@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://smart-traffic-backend.herokuapp.com",
+    "secure": false,
+    "timeout": 2147483647
+  }
+}

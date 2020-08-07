@@ -1,0 +1,57 @@
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    font-family: serif;
+    font-size: 38px;
+    font-family: 'Times New Roman';
+}
+
+
+
+.margin25 {
+    margin: 25px;
+}
+
+.upload {
+    cursor: pointer;
+}
+
+.custom-file {
+    left: 0;
+    position: relative;
+}
+
+#inputGroupFile01 {
+    cursor: pointer;
+}
+
+.file-row {
+    margin-top: 4%;
+}
+
+.start {
+    margin: 1%;
+}
+
+:disabled{
+    cursor: default;
+}
+
+.uploadprogress{
+    background: white;
+}
+
+.fa {
+    margin-left: -8px;
+    margin-right: 8px;
+  }
+
+  .buttonload {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px /* Set a font size */
+  }

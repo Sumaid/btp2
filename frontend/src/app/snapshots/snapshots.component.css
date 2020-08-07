@@ -1,0 +1,25 @@
+.gallery{
+    overflow-x: scroll;
+    width: auto;
+    white-space: nowrap;
+}
+
+.imageclass{
+    margin: 1px;
+    width: 25vw;
+    height: 25vh;
+    display: inline-block;
+}
+
+/*Commend this to disappear scrollbar*/
+.gallery::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0.1px;
+    border-radius: 0.1px;
+}
+
+.gallery::-webkit-scrollbar-thumb {
+    border-radius: 0.1px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 0.1px rgba(255, 255, 255, .5);
+}

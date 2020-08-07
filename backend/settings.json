@@ -1,0 +1,6 @@
+{
+    "YOLO_PATH": "yolo_files",
+    "YOLO_CONFIG_FILE": "yolov3.cfg",
+    "YOLO_WEIGHTS_FILE": "yolov3.weights",
+    "NAMES_FILE": "coco.names"
+}

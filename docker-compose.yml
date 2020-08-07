@@ -1,0 +1,22 @@
+version: '3'
+services:
+  frontend:
+    image: trion/ng-cli:latest
+    container_name: 'frontend-app'
+    volumes:
+      - ./frontend:/usr/app/
+    working_dir: /usr/app/
+    ports:
+      - 4200:4200    # Front end Port
+    command: >
+      bash -c "npm install && ng serve --host 0.0.0.0 --disableHostCheck --proxy-config proxy.conf.dev.json" 
+  backend:
+    image: backend-flask
+    container_name: "backend-app"
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/app # for watching files
+    ports:
+      - "8081:8081" # if changed, please change port in `frontend/proxy.conf.dev.json` and `frontend/proxy.conf.json`

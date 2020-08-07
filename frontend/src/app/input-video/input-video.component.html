@@ -1,0 +1,181 @@
+<div class="mainContainer">
+  <div class="content">
+    <div class="row margin25">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4" style="text-align: center;">
+        <div>
+          <div>
+            <button class="btn btn-primary" id="btnUpload" (click)="fileInput.click()" [disabled]="uploadDisabled == true">Upload</button>
+          </div>
+          <div style="display: none;">
+            <form action="https://smart-traffic-backend.herokuapp.com/api/postvideo" method="post" enctype="multipart/form-data">
+              <input (change)="fileChange($event)" #fileInput type="file" accept="video/*">
+            </form>
+          </div>
+          <div *ngIf="state == false">
+            <div class="file-row row no-gutters local-id-2 uploader-input-element input-status-done"> 
+              <div class="col-xl-6 col-lg-4 col-md-12 col-6 file-name list-element" *ngIf="fileName!=''">{{'Uploading '+fileName+' : '}}</div>
+              <div class="filestatus col-md-6">
+                <div class="progress uploadprogress">
+                  <div class="progress-bar progress-bar-success progress-bar-striped bg-success" role="progressbar"
+                  aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: uploadStatus + '%'}">
+                    <span *ngIf="uploadStatus < 100; else elseBlock">{{uploadStatus + '%'}}</span>
+                    <ng-template #elseBlock><span>Uploaded !</span></ng-template>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button class="btn btn-primary bg-success start" *ngIf="uploadStatus == 100" (click)="startProcessing()" [disabled]="processingStatus == true">
+                <span *ngIf="processingStatus==false; else processing">Start!</span>
+                <ng-template #processing class="buttonload">
+                  <i class="fa fa-spinner fa-spin"></i>Processing
+                </ng-template>
+              </button>
+            </div>
+          </div>
+            <div class="col-md-4">
+              <ng-template #inputSpeed let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Enter Speed Limit</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Speed Limit is a required field and should be between 10kmph and 120kmph.</p>
+                  <form novalidate [formGroup]="inputSpeedForm">
+                    <div class="form-group">
+                      <input #speedLimitInput type="number" class="form-control" placeholder="Enter Speed Limit in kmph"
+                        formControlName="speedLimit">
+                      <div class="alert  alert-danger" *ngIf="inputSpeedForm.errors?.required">
+                        Speed Limit is required!</div>
+                      <div class="alert  alert-danger" *ngIf="inputSpeedForm.errors?.min || inputSpeedForm.errors?.max">
+                        Speed Limit should be between 10kmph and 120kmph.</div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" [disabled]="inputSpeedForm.invalid" class="btn btn-outline-dark"
+                    (click)="c('Save'); saveSpeed(speedLimitInput, inputLane)">Next</button>
+                </div>
+              </ng-template>
+            </div>
+            <div class="col-md-4">
+              <ng-template #inputLane let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Mark Lane</h4>
+                </div>
+                <div class="modal-body">
+                  <p style="text-align:left !important">Click on 'Start Drawing' to draw. Draw only a 4 sided polygon
+                    around the lane/road to be inspected. First edge should be perpendicular to the lane. To draw again click 'Clear Drawing' and then 'Start Drawing'.
+                  </p>
+                  <div class="content" role="main">
+                    <div class="canvas-wrapper">
+                      <canvas id="canvas" class="canvas" width="500" height="500">
+                      </canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark"
+                    (click)="openModal(inputSpeed); d('Cross click'); clearCanvas();">Back</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="btnClick()" id="btnRoof">Start
+                    Drawing</button>
+                  <button type="button" class="btn btn-outline-dark"
+                    (click)="clearCanvas();diableButtonsOnClearCanvas()" id="btnCC">Clear Drawing</button>
+                  <button type="button" class="btn btn-outline-dark"
+                    (click)="getCoordinatesLane(); d('Cross click'); clearCanvas(); loadCanvas(inputPed);"
+                    id="gc">Next</button>
+                  <p id="pp"></p>
+                </div>
+              </ng-template>
+            </div>
+            <div class="col-md-4">
+              <ng-template #inputPed let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Mark Pedestrian Area</h4>
+                </div>
+                <div class="modal-body">
+                  <p style="text-align:left !important">Click on 'Start Drawing' to draw. Draw only a 4 sided polygon
+                    around the Pedestrian Area. To draw again click 'Clear Drawing' and then 'Start Drawing'.</p>
+                  <div class="content" role="main">
+                    <div class="canvas-wrapper">
+                      <canvas id="canvas" class="canvas" width="500" height="500">
+                      </canvas>
+                    </div>
+                  </div>
+                  <!-- <input class="form-check-input" type="checkbox" 
+                  value="noPed" [checked]="false" (change)="noPed($event.target.checked)"/>
+                  <label>No pedestrian area in frame</label>  -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark"
+                    (click)="d('Cross click'); clearCanvas(); loadCanvas(inputLane)">Back</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="btnClick()" id="btnRoof">Start
+                    Drawing</button>
+                  <button type="button" class="btn btn-outline-dark"
+                    (click)="clearCanvas();diableButtonsOnClearCanvas();" id="btnCC">Clear Drawing</button>
+                  <button type="button" class="btn btn-outline-dark"
+                    (click)="getCoordinatesPedestrian(); d('Cross click'); clearCanvas();loadCanvas(inputZebra);"
+                    id="gc">Next</button>
+                  <p id="pp"></p>
+                </div>
+              </ng-template>
+            </div>
+            <div class="col-md-4">
+              <ng-template #inputZebra let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Mark Zebra Crossing</h4>
+                </div>
+                <div class="modal-body">
+                  <p style="text-align:left !important">Click on 'Start Drawing' to draw. Draw only a 4 sided polygon
+                    to mark the Zebra crossing Area. To draw again click 'Clear Drawing' and then 'Start Drawing'.</p>
+                  <div class="content" role="main">
+                    <div class="canvas-wrapper">
+                      <canvas id="canvas" class="canvas" width="500" height="500">
+                      </canvas>
+                    </div>
+                  </div>
+                  <!-- <input class="form-check-input" type="checkbox" 
+                  value="noZeb" [checked]="false" (change)="noZeb($event.target.checked)"/>
+                  <label>No zebra crossing in frame</label>  -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark"
+                    (click)="d('Cross click'); clearCanvas();loadCanvas(inputPed)">Back</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="btnClick()" id="btnRoof">Start
+                    Drawing</button>
+                  <button type="button" class="btn btn-outline-dark"
+                    (click)="clearCanvas();diableButtonsOnClearCanvas();" id="btnCC">Clear Drawing</button>
+                  <button type="button" class="btn btn-outline-dark"
+                    (click)="getCoordinatesZebra(); clearCanvas(); d('Cross click'); openModal(roadLengthTemplate)" id="gc">Next</button>
+                  <p id="pp"></p>
+                </div>
+              </ng-template>
+            </div>
+            <div class="col-md-4">
+              <ng-template #roadLengthTemplate let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Enter Road Length </h4>
+                </div>
+                <div class="modal-body">
+                  <p>Approx road length covered by video coverage ( in Metres )</p>
+                  <form novalidate [formGroup]="roadLengthForm">
+                    <div class="form-group">
+                      <input #roadLengthInput type="number" class="form-control" placeholder="Enter Road Length in metres"
+                        formControlName="roadLength">
+                      <div class="alert  alert-danger" *ngIf="roadLengthForm.errors?.required">
+                        Road Length is required!</div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark"
+                  (click)="loadCanvas(inputZebra)">Back</button>
+                  <button type="button" [disabled]="roadLengthForm.invalid" class="btn btn-outline-dark"
+                    (click)="c('Save'); saveRoadLength(roadLengthInput);  d('Cross click');">Next</button>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
