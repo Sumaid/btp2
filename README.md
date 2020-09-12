@@ -1,5 +1,10 @@
 # Smart Traffic Analysis
 
+
+Presentation : [PPT](https://docs.google.com/presentation/d/1kDze7DhWdZDHkGL_AFtDGlgB0OhIKKMeBao2gsWz7cs/edit?usp=sharing)
+Report : [Google Doc](https://docs.google.com/document/d/11iDqzZGAzez94tyzEA0_Ovs7kVi_bPORqTwjcQncoNY/edit?usp=sharing)
+Code : [Github code link](https://github.com/Sumaid/btp2)
+Documentation : [Github Pages Website](https://sumaid.github.io/btp2/)
 Test Examples : [Google Drive Link](https://drive.google.com/drive/folders/1wNyDH-QYIKb3qiapTXY0FPW1aNNNecij?usp=sharing)
 
 ## Overview
