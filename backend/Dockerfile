@@ -16,7 +16,7 @@ RUN apt-get -qq update; \
         ca-certificates \
         autoconf automake cmake dpkg-dev file git make patch \
         libc-dev libc++-dev libgcc-7-dev libstdc++-7-dev  \
-        dirmngr gnupg2 lbzip2 wget xz-utils libtinfo5; \
+        dirmngr gnupg2 lbzip2 wget xz-utils libtinfo5 libgl1-mesa-glx; \
     rm -rf /var/lib/apt/lists/*
 
 # # Signing keys
@@ -36,7 +36,7 @@ RUN apt-get -qq update; \
 
 # for open cv
 RUN apt-get update --fix-missing
-RUN apt-get install -y libgtk2.0-dev 
+RUN apt-get install -y libgtk2.0-dev
 # for flask web server
 EXPOSE 8081
 

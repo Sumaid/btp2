@@ -34,7 +34,7 @@ After cloning the repository go inside the project folder:
 
 `cd sta`
 
-Run `docker-compose up` which will start a Flask web application for the backend API (default port `8081`) and an Angular frontend served through a webpack development web server (default port `4200`).
+Run `docker-compose up --build` which will start a Flask web application for the backend API (default port `8081`) and an Angular frontend served through a webpack development web server (default port `4200`).
 Few things to keep in mind:
 1. If you want to run docker-compose in background use -b flag.
 2. If your one part crashes like if backend crashes, then you can simply fix the issue and run `docker-compose restart backend` in a different terminal to get that part running.
