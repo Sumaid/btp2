@@ -1,0 +1,662 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.5.12">
+    
+    
+      
+        <title>Design of the application - Smart Traffic Analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4dd2dd8d.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#requirements" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Smart Traffic Analysis" class="md-header-nav__button md-logo" aria-label="Smart Traffic Analysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Smart Traffic Analysis
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Design of the application
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Smart Traffic Analysis" class="md-nav__button md-logo" aria-label="Smart Traffic Analysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Smart Traffic Analysis
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../build/" title="Building the application" class="md-nav__link">
+      Building the application
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Design of the application
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Design of the application" class="md-nav__link md-nav__link--active">
+      Design of the application
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assumptions" class="md-nav__link">
+    Assumptions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-rationale" class="md-nav__link">
+    Design Rationale
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    Architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overall-high-level-architecture" class="md-nav__link">
+    Overall High Level Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-architecture" class="md-nav__link">
+    Software Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-violation-engine-architecture" class="md-nav__link">
+    Traffic Violation Engine Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-case-diagram" class="md-nav__link">
+    Use Case Diagram
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microservices-architecture" class="md-nav__link">
+    Microservices Architecture
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../frontend/" title="Frontend Service" class="md-nav__link">
+      Frontend Service
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../backend/" title="Backend Server" class="md-nav__link">
+      Backend Server
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../main/" title="Backend Main Module" class="md-nav__link">
+      Backend Main Module
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../features/" title="Backend Features" class="md-nav__link">
+      Backend Features
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../docs/" title="MkDocs Server" class="md-nav__link">
+      MkDocs Server
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributors/" title="Contributors" class="md-nav__link">
+      Contributors
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assumptions" class="md-nav__link">
+    Assumptions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-rationale" class="md-nav__link">
+    Design Rationale
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    Architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overall-high-level-architecture" class="md-nav__link">
+    Overall High Level Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-architecture" class="md-nav__link">
+    Software Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-violation-engine-architecture" class="md-nav__link">
+    Traffic Violation Engine Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-case-diagram" class="md-nav__link">
+    Use Case Diagram
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microservices-architecture" class="md-nav__link">
+    Microservices Architecture
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    Tools
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Design of the application</h1>
+                
+                <h2 id="requirements">Requirements</h2>
+<ol>
+<li>
+<p>Automatically detect the traffic violations of rules being considered:</p>
+<ul>
+<li>Compliance with traffic lights</li>
+<li>Not stopping while pedestrians cross the road</li>
+<li>Compliance with speed limit</li>
+<li>Detection of a crash</li>
+</ul>
+</li>
+<li>
+<p>Violation detection should be done through the traffic data that is already available</p>
+<ul>
+<li>From Video data streamed from cameras, or pre-recorded data fed by user</li>
+<li>Real-time traffic signal data, that is available in an existing server.</li>
+</ul>
+</li>
+<li>
+<p>Traffic violation detection should happen automatically for all selected junctions and snapshots are to be stored in a database server.</p>
+<ul>
+<li>There should be a junction/camera selection which can be configured by the traffic police/ concerned authorities.</li>
+</ul>
+</li>
+<li>
+<p>Traffic violation detection should be available for monitoring by the client.</p>
+<ul>
+<li>They should be able to choose a particular junction/camera feed to monitor</li>
+<li>Client should be able to feed in custom video data into the system</li>
+<li>Live processed output should be available if the user demands for the same (GUI to be built for the same)</li>
+<li>Traffic violations/car crashes should be alarmed on the monitoring displays in the control room.</li>
+</ul>
+</li>
+</ol>
+<h2 id="assumptions">Assumptions</h2>
+<ol>
+<li>Availability of a camera stream/pre recorded data and live streams are connected to the police server. (NOTE: For this project, we will be implementing a Minimum Viable Product(MVP)  only the video upload and processing, since we don’t have enough hardware and time to learn and implement the product for a CCTV scenario)</li>
+<li>In the case that the vehicle details should be detected, we assume that it is done by a separate system which performs automatic number plate detection, and extracts vehicle registration data from an already existing server (this is not in our project scope).</li>
+<li>Traffic light data is available from all the junctions required as real-time values.</li>
+</ol>
+<h2 id="design-rationale">Design Rationale</h2>
+<p>The design is based on a distributed architecture, since traffic violation detection is a resource demanding application; Not because of the algorithms involved, but due to the volume of data to be processed. The amount of data processed depends on the following factors:</p>
+<ul>
+<li>Traffic camera/junctions to be monitored simultaneously. </li>
+<li>The amount of data processed depends on the day, time of the day etc., due to various traffic behaviors. </li>
+</ul>
+<p>Because of this, we need a system that automatically scales up as well as down as per the requirement. Also, the system should support live monitoring by a number of officers (clients), which may also increase due to certain events happening in the city. Considering all these the distributed architecture is selected.
+When we go for distributed architecture, the next question is: “What is the basic architecture like?”. The nodes are not geographically distributed, and the network between the nodes are high speed LAN and are very reliable. Hence, the network partition is not considered. So, only node failure is considered. Hence we need a CA system.</p>
+<h2 id="architecture">Architecture</h2>
+<h3 id="overall-high-level-architecture">Overall High Level Architecture</h3>
+<p><img alt="High level architecture" src="../higharch.jpeg" /></p>
+<h3 id="software-architecture">Software Architecture</h3>
+<p><img alt="Software Architecture" src="../softarch.jpeg" /></p>
+<h3 id="traffic-violation-engine-architecture">Traffic Violation Engine Architecture</h3>
+<p><img alt="Traffic Violation Engine Architecture" src="../trafficarch.jpeg" /></p>
+<h3 id="use-case-diagram">Use Case Diagram</h3>
+<p><img alt="Traffic Violation Engine Architecture" src="../usecase.jpeg" /></p>
+<h3 id="microservices-architecture">Microservices Architecture</h3>
+<ol>
+<li>
+<p>Instead of having a monolithic architecture with layers stacked on one another, we are designing our application based on microservices architecture. Monolithic architecture only allows for vertical scaling, but with microservices architecture it's possible to achieve horizontal scaling easily.</p>
+</li>
+<li>
+<p>Numerous benefits of Microservices architecture include :</p>
+<ul>
+<li>Modularity : This makes the application easier to understand, develop, test, and become more resilient to architecture erosion.</li>
+<li>Scalability  : Since microservices are implemented and deployed independently of each other, i.e. they run within independent processes, they can be monitored and scaled independently.</li>
+<li>Distributed development: it parallelizes development by enabling small autonomous teams to develop, deploy and scale their respective services independently.</li>
+</ul>
+</li>
+<li>
+<p>First option with microservices is to have a VM for each microservice. For eg, if our app has three microservices : frontend, backend and db then each microservice will run on a seperate VM. However, a virtual machine has a substantial overhead, like performance is poorer, it consumes a lot of memory in RAM &amp; it occupies a lot of hard disk space. The idea solution would be a lightweight alternative to virtualization which brings us to docker.</p>
+</li>
+</ol>
+<p>Hence for our application, each microservice will be containerized with docker. Instead of having the entire operating system within a docker container, docker makes sure there's only enough kernel pieces to run the corresponding microservice.</p>
+<ol>
+<li>
+<p>Our web application will have seperate microservices for front end, database and each of the features of the backend. For example, for detecting overspeeding vehicles in a video, we will have a seperate microservice running which will take input as video and return output as snapshots of overspeeding cars.</p>
+</li>
+<li>
+<p>While deploying the web application, it's necessary to have container orchestration. Container orchestration is all about managing the life cycles of containers, especially in large, dynamic environments. Software teams use container orchestration to control and automate many tasks including provisioning and deployment of containers, redundancy and availability of containers, Scaling up or removing containers to spread application load evenly across host infrastructure, Movement of containers from one host to another if there is a shortage of resources in a host, or if a host dies, Allocation of resources between containers, etc.</p>
+</li>
+</ol>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>
+<p>Front End:
+We chose Angular as the front end framework.
+Angular is considered a full MVC framework because it offers strong opinions as to how your application should be structured. It also has much more functionality “out-of-the-box”. You don’t need to decide which routing libraries to use or other such considerations. </p>
+</li>
+<li>
+<p>Back End:
+We chose Flask as the back end framework, since it provides simplicity, flexibility and fine-grained control. It is un-opinionated (it lets you decide how you want to implement things).</p>
+</li>
+<li>
+<p>Database:
+PostgresSQL was chosen for of its scalability. </p>
+</li>
+<li>
+<p>Object Detection:
+YOLO : You only look once (YOLO) is a state-of-the-art, real-time object detection system.  </p>
+</li>
+<li>
+<p>Multiple Containers Management:
+Docker-Compose is a tool for defining and running multi-container Docker applications. With Compose, we can use a single YAML file to configure application's services.</p>
+</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../build/" title="Building the application" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Building the application
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../frontend/" title="Frontend Service" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Frontend Service
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.3636a4ec.min.js"></script>
+      <script src="../assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

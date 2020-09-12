@@ -1,0 +1,587 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.5.12">
+    
+    
+      
+        <title>Building the application - Smart Traffic Analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4dd2dd8d.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#building-the-application" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Smart Traffic Analysis" class="md-header-nav__button md-logo" aria-label="Smart Traffic Analysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Smart Traffic Analysis
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Building the application
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Smart Traffic Analysis" class="md-nav__button md-logo" aria-label="Smart Traffic Analysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Smart Traffic Analysis
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Building the application
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Building the application" class="md-nav__link md-nav__link--active">
+      Building the application
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clonefork-repository" class="md-nav__link">
+    Clone/Fork repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-images-and-run-containers-with-docker-compose" class="md-nav__link">
+    Build images and run containers with docker-compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-your-app" class="md-nav__link">
+    Access your app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-without-docker" class="md-nav__link">
+    Working without docker
+  </a>
+  
+    <nav class="md-nav" aria-label="Working without docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend-development" class="md-nav__link">
+    Backend development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend-development" class="md-nav__link">
+    Frontend development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-development" class="md-nav__link">
+    Documentation development
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#things-to-keep-in-mind" class="md-nav__link">
+    Things to keep in mind
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../design/" title="Design of the application" class="md-nav__link">
+      Design of the application
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../frontend/" title="Frontend Service" class="md-nav__link">
+      Frontend Service
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../backend/" title="Backend Server" class="md-nav__link">
+      Backend Server
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../main/" title="Backend Main Module" class="md-nav__link">
+      Backend Main Module
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../features/" title="Backend Features" class="md-nav__link">
+      Backend Features
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../docs/" title="MkDocs Server" class="md-nav__link">
+      MkDocs Server
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributors/" title="Contributors" class="md-nav__link">
+      Contributors
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clonefork-repository" class="md-nav__link">
+    Clone/Fork repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-images-and-run-containers-with-docker-compose" class="md-nav__link">
+    Build images and run containers with docker-compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-your-app" class="md-nav__link">
+    Access your app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-without-docker" class="md-nav__link">
+    Working without docker
+  </a>
+  
+    <nav class="md-nav" aria-label="Working without docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend-development" class="md-nav__link">
+    Backend development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend-development" class="md-nav__link">
+    Frontend development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-development" class="md-nav__link">
+    Documentation development
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#things-to-keep-in-mind" class="md-nav__link">
+    Things to keep in mind
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="building-the-application">Building the application</h1>
+<h2 id="clonefork-repository">Clone/Fork repository</h2>
+<p>First fork or clone this repo:</p>
+<p>e.g. <code>git clone https://github.com/Sumaid/smart_traffic_analysis.git</code></p>
+<h2 id="build-images-and-run-containers-with-docker-compose">Build images and run containers with docker-compose</h2>
+<p>Install <a href="https://docs.docker.com/get-docker/">Docker Desktop</a>.</p>
+<p>After cloning the repository go inside the project folder:</p>
+<p><code>cd smart_traffic_analysis</code></p>
+<p>Run <code>docker-compose up</code> which will start a Flask web application for the backend API (default port <code>8081</code>) and an Angular frontend served through a webpack development web server (default port <code>4200</code>).
+Few things to keep in mind:
+1. If you want to run docker-compose in background use -b flag.
+2. If your one part crashes like if backend crashes, then you can simply fix the issue and run <code>docker-compose restart backend</code> in a different terminal to get that part running.
+Similar if frontend crashes, just run <code>docker-compose restart frontend</code>.</p>
+<h2 id="access-your-app">Access your app</h2>
+<p>In your browser navigate to: <code>http://localhost:4200</code> (or whatever port you defined for the frontend in <code>docker-compose.yml</code>).</p>
+<p>For testing your backend API I recommend using <a href="https://www.getpostman.com/">Postman</a> or Curl, but you can also go to <code>http://localhost:8081/api</code> ( if you are just testing simple GET requests ).</p>
+<h2 id="working-without-docker">Working <strong>without</strong> docker</h2>
+<p>I highly recommend the use of docker and docker-compose as it is far simpler to get started. The great thing about docker is you can run one command <code>docker-compose up</code> on any operating system &amp; environment and your application will be up and running!
+But still if you want to work without docker, you can go through following steps:</p>
+<h3 id="backend-development">Backend development</h3>
+<p>Navigate inside the backend directory: <code>cd backend</code></p>
+<p>Install pip dependencies: <code>pip3 install -r requirements.txt</code></p>
+<p>Run <code>python3 app.py</code> in backend root (will watch files and restart server on port <code>8081</code> on change).</p>
+<h3 id="frontend-development">Frontend development</h3>
+<p>Navigate inside the frontend directory: <code>cd frontend</code></p>
+<p>Assure you have <a href="https://nodejs.org/en/">Nodejs</a> installed.</p>
+<p>Run following commands: </p>
+<ol>
+<li><code>rm -rf node_modules dist tmp</code> </li>
+<li><code>npm install --save-dev angular-cli@latest</code></li>
+<li><code>npm install</code></li>
+<li><code>npm init</code></li>
+</ol>
+<p>Run <code>ng serve --host 0.0.0.0 --disableHostCheck --proxy-config proxy.conf.json</code> in frontend root (will watch files and restart dev-server on port <code>4200</code> on change).
+All calls made to <code>/api</code> will be proxied to backend server (default port for backend <code>8081</code>), this can be changed in <code>proxy.conf.json</code>.</p>
+<h3 id="documentation-development">Documentation development</h3>
+<p>Run following commands in root directory of project: </p>
+<ol>
+<li><code>pip3 install mkdocs mkdocs-material</code> </li>
+<li><code>mkdocs serve</code> </li>
+</ol>
+<p>Documentation will be hosted locally at <a href="http://0.0.0.0:8000">http://0.0.0.0:8000</a>. Host can be changed in <code>mkdocs.yml</code>.
+Documentation is also publicly hosted at <a href="https://sumaid.github.io/smart_traffic_analysis/">https://sumaid.github.io/smart_traffic_analysis/</a>.</p>
+<p>If you make any changes in documentation, test it with <code>mkdocs serve</code> then </p>
+<ol>
+<li>Push changes to remote repository</li>
+<li>Run <code>mkdocs gh-deploy</code> to deploy changes to publicly hosted documentation</li>
+</ol>
+<h2 id="things-to-keep-in-mind">Things to keep in mind</h2>
+<ol>
+<li>You can change port numbers in <code>docker-compose.yml</code>, but if you change backend port number, 
+keep in mind to change it in <code>frontend/proxy.conf.dev.json</code> also.</li>
+<li>If you add new requirements, rerun the command <code>docker-compose up</code>.</li>
+<li>Each api route in backend should have base <code>/api/</code>, so create apis in the format, <code>/api/yourroute/</code>.</li>
+<li>For any new feature, create a new branch &amp; PR before merging it into master.</li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href=".." title="Getting Started" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Getting Started
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../design/" title="Design of the application" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Design of the application
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.3636a4ec.min.js"></script>
+      <script src="../assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
