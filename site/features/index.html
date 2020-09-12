@@ -1,0 +1,1488 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.5.12">
+    
+    
+      
+        <title>Backend Features - Smart Traffic Analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4dd2dd8d.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#backend-features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Smart Traffic Analysis" class="md-header-nav__button md-logo" aria-label="Smart Traffic Analysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Smart Traffic Analysis
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Backend Features
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Smart Traffic Analysis" class="md-nav__button md-logo" aria-label="Smart Traffic Analysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Smart Traffic Analysis
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../build/" title="Building the application" class="md-nav__link">
+      Building the application
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../design/" title="Design of the application" class="md-nav__link">
+      Design of the application
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../frontend/" title="Frontend Service" class="md-nav__link">
+      Frontend Service
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../backend/" title="Backend Server" class="md-nav__link">
+      Backend Server
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../main/" title="Backend Main Module" class="md-nav__link">
+      Backend Main Module
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Backend Features
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Backend Features" class="md-nav__link md-nav__link--active">
+      Backend Features
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#car-crash-detection" class="md-nav__link">
+    Car Crash Detection
+  </a>
+  
+    <nav class="md-nav" aria-label="Car Crash Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-and-logic" class="md-nav__link">
+    Workflow and Logic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overspeeding" class="md-nav__link">
+    Overspeeding
+  </a>
+  
+    <nav class="md-nav" aria-label="Overspeeding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_1" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives_1" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_1" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_1" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic" class="md-nav__link">
+    Logic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_1" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yield-for-pedestrians-detection" class="md-nav__link">
+    Yield for Pedestrians Detection
+  </a>
+  
+    <nav class="md-nav" aria-label="Yield for Pedestrians Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_2" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives_2" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_2" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_2" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_2" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic_1" class="md-nav__link">
+    Logic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop-for-traffic-signal-detection" class="md-nav__link">
+    Stop for Traffic Signal Detection
+  </a>
+  
+    <nav class="md-nav" aria-label="Stop for Traffic Signal Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_3" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives_3" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_3" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_3" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_3" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic_2" class="md-nav__link">
+    Logic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../docs/" title="MkDocs Server" class="md-nav__link">
+      MkDocs Server
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributors/" title="Contributors" class="md-nav__link">
+      Contributors
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#car-crash-detection" class="md-nav__link">
+    Car Crash Detection
+  </a>
+  
+    <nav class="md-nav" aria-label="Car Crash Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-and-logic" class="md-nav__link">
+    Workflow and Logic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overspeeding" class="md-nav__link">
+    Overspeeding
+  </a>
+  
+    <nav class="md-nav" aria-label="Overspeeding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_1" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives_1" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_1" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_1" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic" class="md-nav__link">
+    Logic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_1" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yield-for-pedestrians-detection" class="md-nav__link">
+    Yield for Pedestrians Detection
+  </a>
+  
+    <nav class="md-nav" aria-label="Yield for Pedestrians Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_2" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives_2" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_2" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_2" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_2" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic_1" class="md-nav__link">
+    Logic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop-for-traffic-signal-detection" class="md-nav__link">
+    Stop for Traffic Signal Detection
+  </a>
+  
+    <nav class="md-nav" aria-label="Stop for Traffic Signal Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_3" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives_3" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_3" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_3" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_3" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic_2" class="md-nav__link">
+    Logic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="backend-features">Backend Features</h1>
+<p>There are 4 submodules corresponding to different traffic violation detection.</p>
+<ol>
+<li>Car Crash Detection</li>
+<li>Overspeeding Detection</li>
+<li>Pedestrians Detection</li>
+<li>Traffic Signal Detection</li>
+</ol>
+<h2 id="car-crash-detection">Car Crash Detection</h2>
+<h3 id="overview">Overview</h3>
+<p>This module finds crashes / accidents among Cars, Trucks, Bus, Person.
+Class takes a list of frames passed on from the Object Detection Module as input and saves screenshot of crashes into another folder.</p>
+<h3 id="objectives">Objectives</h3>
+<ol>
+<li>Identify crashes between various objects.</li>
+<li>Identify the objects involved in crashes and highlight them.</li>
+<li>Store the screenshots of frames that have crashes in them.</li>
+</ol>
+<h3 id="class">Class</h3>
+<ol>
+<li>CrashDetectionModule<ul>
+<li>Input : List of frames</li>
+<li>Function : Detects and stores crashes for a given video</li>
+</ul>
+</li>
+</ol>
+<h3 id="functions">Functions</h3>
+<ol>
+<li>
+<p><code>process_rule()</code> :</p>
+<ul>
+<li>Input : None</li>
+<li>Function : Driver function having all major function calls. Takes each frame, sends it to object detection module and then detects crash.</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>detect_crash(current_frame, boxes, box_labels)</code> :</p>
+<ul>
+<li>Input : current_frame(frame object) to be processed along with the bounding boxes (list of list) present and their box_labels (list)</li>
+<li>Trigger : Called by process_rule()</li>
+<li>Function : Main crash computation function. </li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>get_crash_objects_list(box_labels)</code> :</p>
+<ul>
+<li>Input : box_labels(list) - labels of the detected objects</li>
+<li>Trigger : Called by detect_crash(...)</li>
+<li>Function : Saves the indexes of all the objects whose crash we are interested in. </li>
+<li>Output : crashObjects(list)</li>
+</ul>
+</li>
+<li>
+<p><code>get_overlap_variables(box)</code> :</p>
+<ul>
+<li>Input : box(list) - top left and bottom right coordinates of the object</li>
+<li>Trigger : Called by detect_crash(...)</li>
+<li>Function : Computes the coordinates of the center of object and it's height and width.</li>
+<li>Output : (list) of coordinates of center and objects bounding box's height and width.</li>
+</ul>
+</li>
+<li>
+<p><code>detect_overlap(object1_carsh_variables, object2_crash_variables)</code> :</p>
+<ul>
+<li>Input : object1_carsh_variables and object2_crash_variables list returned by the get_overlap_variables(...) function</li>
+<li>Trigger : Called by detect_crash(...)</li>
+<li>Function : Computes if there is a collision between two objects.</li>
+<li>Output : (boolean) to indicate if there is a collision or not</li>
+</ul>
+</li>
+<li>
+<p><code>report_crash(frame, crashing_objects)</code> :</p>
+<ul>
+<li>Input : frame(frame object) is the current frame and crashing_objects(list of list) consists of the coordinates of the bounding boxes of the two objects involved in crash</li>
+<li>Trigger : Called by detect_crash(...) when detect_overlap(...) return True</li>
+<li>Function : Driver function that increments the counts of total crashes call the box drawing function and the save_screenshot(...) function.</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>draw_crashing_objects(frame, crashing_objects)</code> :</p>
+<ul>
+<li>Input : frame(frame object) is the current frame and crashing_objects(list of list) consists of the coordinates of the bounding boxes of the two objects involved in crash</li>
+<li>Trigger : Called by report_crash(...)</li>
+<li>Function : Highlights the objects whose crash takes place</li>
+<li>Output : frame(frame object) the modified frame which has the highlighted crashing objects</li>
+</ul>
+</li>
+<li>
+<p><code>add_snapshot(frame)</code> :</p>
+<ul>
+<li>Input : frame(frame object) is the current frame</li>
+<li>Trigger : Called by detect_crash(...)</li>
+<li>Function : Increments the total number of crashes and stores the crash frame</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>output_snapshot()</code> :</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : -</li>
+<li>Function : Saves the screenshots of crashes into a folder</li>
+<li>Output : None</li>
+</ul>
+</li>
+</ol>
+<h3 id="variables">Variables</h3>
+<ol>
+<li>
+<p><code>total_crashes</code> :</p>
+<ul>
+<li>Type : Int</li>
+<li>Purpose : Stores the total number of crashes for the current frame</li>
+<li>Default Value : 0</li>
+</ul>
+</li>
+<li>
+<p><code>frame_saved</code> : </p>
+<ul>
+<li>Type : Int</li>
+<li>Purpose : Frame number of the last frame whose screentshot was saved</li>
+<li>Default Value : -100</li>
+</ul>
+</li>
+<li>
+<p><code>current_frame_num</code> : </p>
+<ul>
+<li>Type : Int</li>
+<li>Purpose : Frame number of the frame whose screentshot is saved</li>
+<li>Default Value : -1</li>
+</ul>
+</li>
+<li>
+<p><code>objects_to_monitor</code> : </p>
+<ul>
+<li>Type : List</li>
+<li>Purpose : Stores the index of all the objects whose crash we are interested in. (Indexes are stored according to the coco.names file)</li>
+<li>Default Value : [0, 2, 5, 7]</li>
+<li>NOTE : Refer  <a href="https://github.com/pjreddie/darknet/blob/master/data/coco.names">coco.names</a> file to add more objects </li>
+</ul>
+</li>
+<li>
+<p><code>inverse_collision_relaxation_x</code> : </p>
+<ul>
+<li>Type : Float</li>
+<li>Purpose : One minus this fraction allows how much one object can be inside another object along x and still collision will be detected</li>
+<li>Default Value : 0.9</li>
+</ul>
+</li>
+<li>
+<p><code>inverse_collision_relaxation_y</code> : </p>
+<ul>
+<li>Type : Float</li>
+<li>Purpose : One minus this fraction allows how much one object can be inside another object along y and still collision will be detected</li>
+<li>Default Value : 0.6</li>
+</ul>
+</li>
+<li>
+<p><code>input_video_data</code> : </p>
+<ul>
+<li>Type : List</li>
+<li>Purpose : Contains the frames of the input video</li>
+</ul>
+</li>
+<li>
+<p><code>output_video_data</code> : </p>
+<ul>
+<li>Type : List</li>
+<li>Purpose : Contains the modified frames</li>
+<li>Default Value : []</li>
+</ul>
+</li>
+</ol>
+<h3 id="modules">Modules</h3>
+<p>Following is the list of modules used for this feature.</p>
+<ol>
+<li>
+<p><code>objectDetectionModule</code> :</p>
+<ul>
+<li>Purpose : Returns all the objects in the frame along with thier labels for crash detection.</li>
+</ul>
+</li>
+<li>
+<p><code>opencv</code> :</p>
+<ul>
+<li>Purpose : Used for highlighting objects</li>
+</ul>
+</li>
+</ol>
+<h3 id="workflow-and-logic">Workflow and Logic</h3>
+<p><em><strong>init</strong>()</em> Initializes the variables then <em>process_rule()</em> takes input video data and then for each frame detects crash.
+<em>detect_crash()</em> then takes current frame, it’s detected objects and those object labels. First it finds out all the objects whose accident/crash we are interested in using the <em>get_crash_objects_list()</em> function. Ex car, person, bus etc. Next it gets the coordinates which are used for collision detection from the <em>get_overlap_variables()</em> function.
+After getting these <em>detect_overlap()</em> checks if there is a collision. If there is the objects are passed onto the function <em>report_crash()</em> which in turn calls the rectangle drawing function <em>draw_crashing_objects()</em>  and the <em>save_screenshot()</em> function to store the frame’s screenshot.</p>
+<h2 id="overspeeding">Overspeeding</h2>
+<h3 id="overview_1">Overview</h3>
+<p>The overspeeding module checks if there are any cars that are overspeeding on the marked lane</p>
+<h3 id="objectives_1">Objectives</h3>
+<ol>
+<li>To detect overspeeding cars on the lane</li>
+<li>To save screenshots of the overspeeding cars</li>
+</ol>
+<h3 id="functions_1">Functions</h3>
+<ol>
+<li>
+<p><code>process_rule</code> :</p>
+<ul>
+<li>Input : frames of video</li>
+<li>Trigger : External trigger from composite object</li>
+<li>Function : Tracks cars in the lane and checks the speed by calculating the time taken to cover the lane distance</li>
+<li>Output : None, just calls relevant functions to perform actions in case of overspeeding</li>
+</ul>
+</li>
+<li>
+<p><code>check_line_intersection</code> :</p>
+<ul>
+<li>Input : two lines, which are each a tuple of tuples</li>
+<li>Trigger : called for the process_rule to see if a car has crossed the start/end line</li>
+<li>Function : to find if the two lines have intersected</li>
+<li>Output : returns a boolean value depending on whether the lines have intersected or not</li>
+</ul>
+</li>
+<li>
+<p><code>calculate_speed</code> :</p>
+<ul>
+<li>Input : number of frames taken for a bounding box to cross the lane </li>
+<li>Trigger : called to check speed of the car</li>
+<li>Function : to calculate the actual speed of the car</li>
+<li>Output : returns the speed of the vehicle</li>
+</ul>
+</li>
+<li>
+<p><code>add_snapshot</code> :</p>
+<ul>
+<li>Input : current frame, the boundng box coordinates of the car, speed of the car, and current frame number</li>
+<li>Trigger : called when the car exceeds the speed limit</li>
+<li>Function : to add snapshot details of a violating car to a list</li>
+<li>Output : appends a snapshot to the list</li>
+</ul>
+</li>
+<li>
+<p><code>output_snapshots</code> :</p>
+<ul>
+<li>Input : none</li>
+<li>Trigger : Called from external module</li>
+<li>Function : saves the snapshots taken</li>
+<li>Output : Saves snapshots in the format speed_timeofvideo_randomstring.jpg</li>
+</ul>
+</li>
+</ol>
+<h3 id="variables_1">Variables</h3>
+<p>The generic metadata have been loaded as variables, as a start and end line for measuring speed, a tracker to keep track of the SORT results, and a snapshoot details array.</p>
+<h3 id="logic">Logic</h3>
+<p>The overspeed detection module is one of the traffic rule violation detection modules. The user marks the zone in which the over speed detection should take place – by marking a rectangle in the front end. This sends back the co-ordinates of the edges of the zone to this module. Also the user enters the road length for the marked speed detection zone.
+This module uses the object detection algorithm and the SORT Algorithm to detect and track objects across the frames of the video (in future CCTV frames). Once the object detected (box) crosses the start and end edges of the speed detection zone the speed of the object is calculated using the following formula:</p>
+<p>3.6 * frame rate * road distamce/ frames taken by the car to cross the lines</p>
+<p>If the speed is within the speed limit, no action is taken. Once the speed exceeds the speed limit entered by the user, the object is marked in RED and the screenshot is saved in the prescribed folder.</p>
+<h3 id="modules_1">Modules</h3>
+<p>Following is the list of modules used for this feature.</p>
+<ol>
+<li><code>objectDetectionModule</code> :<ul>
+<li>Purpose : Returns all the objects in the frame</li>
+</ul>
+</li>
+<li>
+<p><code>opencv</code> :</p>
+<ul>
+<li>Purpose : Used for highlighting objects</li>
+</ul>
+</li>
+<li>
+<p><code>SORT</code>:</p>
+<ul>
+<li>Purpose: to track the object across frames </li>
+</ul>
+</li>
+</ol>
+<h2 id="yield-for-pedestrians-detection">Yield for Pedestrians Detection</h2>
+<h3 id="overview_2">Overview</h3>
+<p>This module finds Cars, Trucks, Buses or Motorcycles which enter Pedestrian area while it's still in use for crossing.
+Class takes a list of frames passed on from the Object Detection Module as input and saves screenshot of violations into another folder.</p>
+<h3 id="objectives_2">Objectives</h3>
+<ol>
+<li>Identify vehicles which violate Pedestrian Crossing.</li>
+<li>Store the screenshots of frames that have violations in them.</li>
+</ol>
+<h3 id="functions_2">Functions</h3>
+<ol>
+<li>
+<p><code>process_rule</code> :</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : External trigger from composite object</li>
+<li>Function : Driver function having all major function calls. Takes each frame, sends it to object detection module and then detects any violations.</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>draw_pedestrian_boxes</code> :</p>
+<ul>
+<li>Input : frame(frame object) to be processed along with the waiting_boxes (list of list) and
+crossing_boxes(List of List) obtained from <em>assign_pedestrian_boxes()</em> </li>
+<li>Trigger : Called by process_rule()</li>
+<li>Function : Highlights the waiting and crossing areas</li>
+<li>Output : frame(frame object)</li>
+</ul>
+</li>
+<li>
+<p><code>detect_violation</code> :</p>
+<ul>
+<li>Input : frame(frame object) to be processed along with the bounding boxes (tuple of list of list) present and their labels (list) </li>
+<li>Trigger : Called by process_rule()</li>
+<li>Function : Detects if a vehicle does not stop when pedestrians are waiting to cross the road or are already crossing the road</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>object_in_box</code> :</p>
+<ul>
+<li>Input : obj(list) contains coordinates of the the object and box(list) contains coordinates of the box </li>
+<li>Trigger : Called by detect_violation()</li>
+<li>Function : Detects if the object is inside the box</li>
+<li>Output : (boolean) to indicate if the object is inside the box or not</li>
+</ul>
+</li>
+<li>
+<p><code>draw_violating_objects</code> :</p>
+<ul>
+<li>Input : frame(frame object) is the current frame and crashing_objects(list of list) consists of the coordinates of the bounding boxes of the two objects involved in violation (vehicle and person)</li>
+<li>Trigger : Called by detect_violation()</li>
+<li>Function : Highlights the vehicles that violate rules</li>
+<li>Output : frame(frame object) the modified frame which has the highlighted violating objects</li>
+</ul>
+</li>
+<li>
+<p><code>add_snapshot</code> :</p>
+<ul>
+<li>Input : frame(frame object) is the current frame</li>
+<li>Trigger : Called by detect_violation()</li>
+<li>Function : Saves a screenshot of the violation frame</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>output_snapshots</code> :</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : External trigger from composite object</li>
+<li>Function : Saves the screenshots of violations into a folder</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>set_metadata(metadata)</code> :</p>
+<ul>
+<li>Input : metadata (dict)</li>
+<li>Trigger : External trigger from composite object</li>
+<li>Function : Loads the meta data</li>
+<li>Output : None</li>
+</ul>
+</li>
+</ol>
+<h3 id="variables_2">Variables</h3>
+<ol>
+<li>
+<p><code>num_violations</code> :</p>
+<ul>
+<li>Type : Int</li>
+<li>Purpose : Stores the total number of violations in the video</li>
+<li>Default Value : 0</li>
+</ul>
+</li>
+<li>
+<p><code>frame_saved</code> : </p>
+<ul>
+<li>Type : Int</li>
+<li>Purpose : Frame number of the last frame whose screentshot was saved</li>
+<li>Default Value : -100</li>
+</ul>
+</li>
+<li>
+<p><code>current_frame_num</code> : </p>
+<ul>
+<li>Type : Int</li>
+<li>Purpose : Frame number of the frame currently being processed</li>
+<li>Default Value : -1</li>
+</ul>
+</li>
+<li>
+<p><code>waiting_boxes</code> :</p>
+<ul>
+<li>Type : List of List</li>
+<li>Purpose : Stores the coordinates of the pedestrian waiting areas</li>
+<li>Default Value : []</li>
+</ul>
+</li>
+<li>
+<p><code>crossing_boxes</code> :</p>
+<ul>
+<li>Type : List of List</li>
+<li>Purpose : Stores the coordinates of the zebra crossing areas</li>
+<li>Default Value : []</li>
+</ul>
+</li>
+<li>
+<p><code>vehicle_list</code> : </p>
+<ul>
+<li>Type : List</li>
+<li>Purpose : Stores names of vehicle whose violations need to be kept track of</li>
+<li>Default Value : ['motorbike', 'bus', 'truck', 'car']</li>
+</ul>
+</li>
+<li>
+<p><code>input_video_data</code> : </p>
+<ul>
+<li>Type : List</li>
+<li>Purpose : Contains the frames of the input video</li>
+<li>Default Value: []</li>
+</ul>
+</li>
+<li>
+<p><code>output_video_data</code> : </p>
+<ul>
+<li>Type : List</li>
+<li>Purpose : Contains the modified frames</li>
+<li>Default Value : []</li>
+</ul>
+</li>
+</ol>
+<h3 id="modules_2">Modules</h3>
+<p>Following is the list of modules used for this feature.</p>
+<ol>
+<li>
+<p><code>objectDetectionModule</code> :</p>
+<ul>
+<li>Purpose : Returns all the objects in the frame along with their labels for crash detection.</li>
+</ul>
+</li>
+<li>
+<p><code>opencv</code> :</p>
+<ul>
+<li>Purpose : Used for highlighting objects</li>
+</ul>
+</li>
+</ol>
+<h3 id="logic_1">Logic</h3>
+<p>We check if there is a pedestrian either waiting to cross the road or already crossing the road. Next we check if any vehicles do not stop for the pedestrians to cross the road. This is done by checking if a given object is in the box area defined as pedestrian area. If there is a violation, the vehicles violating the rule are highlighted and a screenshot is saved.</p>
+<h2 id="stop-for-traffic-signal-detection">Stop for Traffic Signal Detection</h2>
+<h3 id="overview_3">Overview</h3>
+<p>This module finds Cars, Trucks, Buses or Motorcycles which break Traffic Signals.
+Class takes a list of frames passed on from the Object Detection Module as input and saves screenshot of violations into another folder.</p>
+<h3 id="objectives_3">Objectives</h3>
+<ol>
+<li>Identify vehicles which violate Traffic Signals.</li>
+<li>Store the screenshots of frames that have violations in them.</li>
+</ol>
+<h3 id="functions_3">Functions</h3>
+<ol>
+<li>
+<p><code>process_rule</code> :</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : External trigger from composite object</li>
+<li>Function : Driver function having all major function calls. Takes each frame, sends it to object detection module and then detects any violations.</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>simulate_signal</code> :</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : process_rule()</li>
+<li>Function : Simulates a traffic signal</li>
+<li>Output : signal(list)</li>
+</ul>
+</li>
+<li>
+<p><code>draw_traffic_box(frame)</code> :</p>
+<ul>
+<li>Input : frame(frame object) to be processed </li>
+<li>Trigger : Called by process_rule()</li>
+<li>Function : Highlights the traffic stop area for signals</li>
+<li>Output : frame(frame object)</li>
+</ul>
+</li>
+<li>
+<p><code>detect_violation</code> :</p>
+<ul>
+<li>Input : frame(frame object) to be processed along with the bounding boxes (list of list) present and their labels (list) </li>
+<li>Trigger : Called by process_rule()</li>
+<li>Function : Detects if there is a vehicle outside the traffic box</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>object_in_box</code> :</p>
+<ul>
+<li>Input : obj(list) contains coordinates of the the object and box(list) contains coordinates of the box </li>
+<li>Trigger : Called by detect_violation()</li>
+<li>Function : Detects if the object is inside the box</li>
+<li>Output : (boolean) to indicate if the object is inside the box or not</li>
+</ul>
+</li>
+<li>
+<p><code>draw_violating_objects(frame, violating_objects)</code> :</p>
+<ul>
+<li>Input : frame(frame object) is the current frame and violating_objects(list of list) consists of the coordinates of the bounding boxes of vehicles that come out of the traffic box</li>
+<li>Trigger : Called by detect_violation()</li>
+<li>Function : Highlights the vehicles that violate rules</li>
+<li>Output : frame(frame object) the modified frame which has the highlighted violating objects</li>
+</ul>
+</li>
+<li>
+<p><code>add_snapshot(frame)</code> :</p>
+<ul>
+<li>Input : frame(frame object) is the current frame</li>
+<li>Trigger : Called by detect_violation()</li>
+<li>Function : Increments the total number of violations and stores the violation frame</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>output_snapshot()</code> :</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : External trigger from composite object</li>
+<li>Function : Saves the screenshots of violations into a folder</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>set_metadata(metadata)</code> :</p>
+<ul>
+<li>Input : metadata (dict)</li>
+<li>Trigger : External trigger from composite object</li>
+<li>Function : Loads the meta data</li>
+<li>Output : None</li>
+</ul>
+</li>
+</ol>
+<h3 id="variables_3">Variables</h3>
+<ol>
+<li>
+<p><code>num_violations</code> :</p>
+<ul>
+<li>Type : Int</li>
+<li>Purpose : Stores the total number of violations for the current frame</li>
+<li>Default Value : 0</li>
+</ul>
+</li>
+<li>
+<p><code>frame_saved</code> : </p>
+<ul>
+<li>Type : Int</li>
+<li>Purpose : Frame number of the last frame whose screentshot was saved</li>
+<li>Default Value : -100</li>
+</ul>
+</li>
+<li>
+<p><code>current_frame_num</code> : </p>
+<ul>
+<li>Type : Int</li>
+<li>Purpose : Frame number of the frame whose screentshot is saved</li>
+<li>Default Value : -1</li>
+</ul>
+</li>
+<li>
+<p><code>traffic_box</code> :</p>
+<ul>
+<li>Type : List </li>
+<li>Purpose : Stores the coordinates of the traffic box</li>
+<li>Default Value : []</li>
+</ul>
+</li>
+<li>
+<p><code>crossing_boxes</code> :</p>
+<ul>
+<li>Type : List of List</li>
+<li>Purpose : Stores the coordinates of the crossing areas</li>
+<li>Default Value : []</li>
+</ul>
+</li>
+<li>
+<p><code>vehicle_list</code> : </p>
+<ul>
+<li>Type : List</li>
+<li>Purpose : Stores names of vehicle whose violations need to be kept track of</li>
+<li>Default Value : ['motorbike', 'bus', 'truck', 'car']</li>
+</ul>
+</li>
+<li>
+<p><code>input_video_data</code> : </p>
+<ul>
+<li>Type : List</li>
+<li>Purpose : Contains the frames of the input video</li>
+<li>Default Value : []</li>
+</ul>
+</li>
+<li>
+<p><code>output_video_data</code> : </p>
+<ul>
+<li>Type : List</li>
+<li>Purpose : Contains the modified frames</li>
+<li>Default Value : []</li>
+</ul>
+</li>
+</ol>
+<h3 id="modules_3">Modules</h3>
+<p>Following is the list of modules used for this feature.</p>
+<ol>
+<li>
+<p><code>objectDetectionModule</code> :</p>
+<ul>
+<li>Purpose : Returns all the objects in the frame along with thier labels for crash detection.</li>
+</ul>
+</li>
+<li>
+<p><code>opencv</code> :</p>
+<ul>
+<li>Purpose : Used for highlighting objects</li>
+</ul>
+</li>
+</ol>
+<h3 id="logic_2">Logic</h3>
+<p>We keep track of the all the vehicles coordinates and if it steps out traffic box then we detect a violation. For this, we check if the rectangle defining a vehicle and the traffic box are overlapping.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../main/" title="Backend Main Module" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Backend Main Module
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../docs/" title="MkDocs Server" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                MkDocs Server
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.3636a4ec.min.js"></script>
+      <script src="../assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

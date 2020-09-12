@@ -1,0 +1,14 @@
+site_name: Smart Traffic Analysis
+dev_addr: 0.0.0.0:8000
+nav:
+    - Getting Started: index.md
+    - Building the application: build.md
+    - Design of the application: design.md
+    - Frontend Service: frontend.md
+    - Backend Server: backend.md
+    - Backend Main Module: main.md
+    - Backend Features: features.md
+    - MkDocs Server: docs.md
+    - Contributors: contributors.md
+theme:
+    name: material

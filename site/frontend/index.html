@@ -1,0 +1,1360 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.5.12">
+    
+    
+      
+        <title>Frontend Service - Smart Traffic Analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4dd2dd8d.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#frontend" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Smart Traffic Analysis" class="md-header-nav__button md-logo" aria-label="Smart Traffic Analysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Smart Traffic Analysis
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Frontend Service
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Smart Traffic Analysis" class="md-nav__button md-logo" aria-label="Smart Traffic Analysis">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Smart Traffic Analysis
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../build/" title="Building the application" class="md-nav__link">
+      Building the application
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../design/" title="Design of the application" class="md-nav__link">
+      Design of the application
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Frontend Service
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Frontend Service" class="md-nav__link md-nav__link--active">
+      Frontend Service
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app-root-component" class="md-nav__link">
+    App root component
+  </a>
+  
+    <nav class="md-nav" aria-label="App root component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-video-component" class="md-nav__link">
+    Input Video Component
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Video Component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives_1" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_1" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_1" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_1" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-streaming-component" class="md-nav__link">
+    Video Streaming Component
+  </a>
+  
+    <nav class="md-nav" aria-label="Video Streaming Component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives_2" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_2" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_2" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_2" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snapshots-rendering-component" class="md-nav__link">
+    Snapshots Rendering Component
+  </a>
+  
+    <nav class="md-nav" aria-label="Snapshots Rendering Component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives_3" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_3" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_3" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_3" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-buttons-component" class="md-nav__link">
+    Radio buttons component
+  </a>
+  
+    <nav class="md-nav" aria-label="Radio buttons component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives_4" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_4" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_4" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_4" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../backend/" title="Backend Server" class="md-nav__link">
+      Backend Server
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../main/" title="Backend Main Module" class="md-nav__link">
+      Backend Main Module
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../features/" title="Backend Features" class="md-nav__link">
+      Backend Features
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../docs/" title="MkDocs Server" class="md-nav__link">
+      MkDocs Server
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributors/" title="Contributors" class="md-nav__link">
+      Contributors
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#app-root-component" class="md-nav__link">
+    App root component
+  </a>
+  
+    <nav class="md-nav" aria-label="App root component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-video-component" class="md-nav__link">
+    Input Video Component
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Video Component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives_1" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_1" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_1" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_1" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-streaming-component" class="md-nav__link">
+    Video Streaming Component
+  </a>
+  
+    <nav class="md-nav" aria-label="Video Streaming Component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives_2" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_2" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_2" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_2" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snapshots-rendering-component" class="md-nav__link">
+    Snapshots Rendering Component
+  </a>
+  
+    <nav class="md-nav" aria-label="Snapshots Rendering Component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives_3" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_3" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_3" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_3" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-buttons-component" class="md-nav__link">
+    Radio buttons component
+  </a>
+  
+    <nav class="md-nav" aria-label="Radio buttons component">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectives_4" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions_4" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables_4" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules_4" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="frontend">Frontend</h1>
+<h2 id="overview">Overview</h2>
+<p>Angular ( TypeScript ) framework is used for frontend of the application. We have written code in a modular way, segregating different parts into following components.</p>
+<ol>
+<li>App root component</li>
+<li>Input Video component</li>
+<li>Video Streaming component</li>
+<li>Snapshots Rendering component</li>
+<li>Radio buttons component</li>
+</ol>
+<h2 id="app-root-component">App root component</h2>
+<p>Main component of the framework. </p>
+<h3 id="objectives">Objectives</h3>
+<ol>
+<li>Keep Track of state of the application.</li>
+<li>Manage global state of the application.</li>
+</ol>
+<h3 id="functions">Functions</h3>
+<ol>
+<li>
+<p><code>refreshEvent(event)</code> :</p>
+<ul>
+<li>Input : Feature Type wrapped in an Angular Event</li>
+<li>Trigger : User clicking a different feature type will trigger this function</li>
+<li>Function : Reloading video stream and snapshots based on selected feature</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>stateOff(event)</code> :</p>
+<ul>
+<li>Input : Application state wrapped in an Angular Event</li>
+<li>Trigger : Backend processing getting completed</li>
+<li>Function : Changing application state at global level</li>
+<li>Output : None</li>
+</ul>
+</li>
+</ol>
+<h3 id="variables">Variables</h3>
+<ol>
+<li>
+<p><code>state</code> :</p>
+<ul>
+<li>Type : Boolean ( True / False )</li>
+<li>Purpose : Global application state indicating whether media files should be rendered or not</li>
+<li>Default Value : <code>false</code></li>
+</ul>
+</li>
+<li>
+<p><code>title</code> : </p>
+<ul>
+<li>Type : String</li>
+<li>Purpose : Title of the application</li>
+<li>Default Value : <code>frontend</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="modules">Modules</h3>
+<ol>
+<li><code>@angular/core/ViewChild</code> :<ul>
+<li>Purpose : To access video streaming and snapshots components from typescript code.</li>
+</ul>
+</li>
+</ol>
+<h2 id="input-video-component">Input Video Component</h2>
+<h3 id="objectives_1">Objectives</h3>
+<ol>
+<li>Take user's video as input and send it to backend</li>
+<li>Once user selects video, ask users for different parameters which will be used in analysis</li>
+<li>Send parameters to backend for analysis</li>
+</ol>
+<h3 id="functions_1">Functions</h3>
+<ol>
+<li>
+<p><code>startProcessing()</code> :</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : User clicking 'Start' button </li>
+<li>Purpose : To set the application status to 'processing'</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>finishProcessing()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : Backend finishing processing</li>
+<li>Purpose : To set the application status to done with processing</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>upload()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : User clicking upload button</li>
+<li>Purpose : To upload video to backend</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>getImage()</code>:</p>
+<ul>
+<li>Input : Image url ( String )</li>
+<li>Trigger : User starting process of uploaded video</li>
+<li>Purpose : To get a frame of video on which user can draw</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>openModal(templateReference)</code>:</p>
+<ul>
+<li>Input : Reference to a modal box tag in template</li>
+<li>Trigger : User clicking next on modal boxes</li>
+<li>Purpose : Open the corresponding modal box</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>saveRoadLength(input_)</code>:</p>
+<ul>
+<li>Input : Reference to input tag in template</li>
+<li>Trigger : User clicking next after typing road length</li>
+<li>Purpose : Save the typed road length input</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>loadCanvas(modalName)</code>:</p>
+<ul>
+<li>Input : Name of modal box</li>
+<li>Trigger : User wanting to draw on image</li>
+<li>Purpose : Load canvas on top of image on which user can draw</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>btnClick()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : Finishing inputting parameters</li>
+<li>Purpose : Finishing inputting parameters</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>finalize()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : User clicking 'Next' button in the last modal box</li>
+<li>Purpose : Finalize parameters</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>makePolygon()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : User clicking 4th point in the drawing</li>
+<li>Purpose : Making polygon out of selected points</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>clearCanvas()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : User finishing drawing</li>
+<li>Purpose : Clear drawing canvas</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>diableButtonsOnClearCanvas()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : User clicking buttons on canvas</li>
+<li>Purpose : Disable buttons on clear canvas selection</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>getCoordinatesZebra()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : User clicking next on zebra crossing modal box</li>
+<li>Purpose : To save coordinates of zebra corssing</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>getCoordinatesPedestrian()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : User clicking next on pedestrian modal box</li>
+<li>Purpose : To save coordinates of pedesitrian area</li>
+<li>Output : None</li>
+</ul>
+</li>
+<li>
+<p><code>getCoordinatesLane()</code>:</p>
+<ul>
+<li>Input : None</li>
+<li>Trigger : User clicking next on lane marking modal box</li>
+<li>Purpose : To save coordinates of lane markings</li>
+<li>Output : None</li>
+</ul>
+</li>
+</ol>
+<h3 id="variables_1">Variables</h3>
+<ol>
+<li>
+<p><code>uploadedFiles</code> :</p>
+<ul>
+<li>Type : Array&lt;'File'&gt;</li>
+<li>Purpose : Store uploaded files</li>
+<li>Default Value : Empty</li>
+</ul>
+</li>
+<li>
+<p><code>state</code> : </p>
+<ul>
+<li>Type : Boolean </li>
+<li>Purpose : State of the application</li>
+<li>Default Value : Same as root component</li>
+</ul>
+</li>
+<li>
+<p><code>processingStatus</code> : </p>
+<ul>
+<li>Type : Boolean</li>
+<li>Purpose : Stores whether processing is completed or not</li>
+<li>Default Value : <code>false</code></li>
+</ul>
+</li>
+<li>
+<p><code>stateOff</code> : </p>
+<ul>
+<li>Type : Event Emitter</li>
+<li>Purpose : To trigger parent component to change status</li>
+<li>Default Value : <code>false</code></li>
+</ul>
+</li>
+<li>
+<p><code>uploadStatus</code> : </p>
+<ul>
+<li>Type : Boolean</li>
+<li>Purpose : To show whether uploading is done or not</li>
+<li>Default Value : <code>false</code></li>
+</ul>
+</li>
+<li>
+<p><code>scalingFactorX</code> : </p>
+<ul>
+<li>Type : Float</li>
+<li>Purpose : To show how much to scale coordinates in x direction</li>
+<li>Default Value : <code>1</code></li>
+</ul>
+</li>
+<li>
+<p><code>scalingFactorY</code> : </p>
+<ul>
+<li>Type : Float</li>
+<li>Purpose : To show how much to scale coordinates in y direction</li>
+<li>Default Value : <code>1</code></li>
+</ul>
+</li>
+<li>
+<p><code>uploaded</code> : </p>
+<ul>
+<li>Type : Boolean</li>
+<li>Purpose : To show status about uploading</li>
+<li>Default Value : <code>false</code></li>
+</ul>
+</li>
+<li>
+<p><code>imageToShow</code> : </p>
+<ul>
+<li>Type : any</li>
+<li>Purpose : Image which will be showed</li>
+<li>Default Value : None</li>
+</ul>
+</li>
+<li>
+<p><code>isImageLoading</code>:</p>
+<ul>
+<li>Type : any</li>
+<li>Purpose : To store status of image loading</li>
+<li>Default Value : None</li>
+</ul>
+</li>
+<li>
+<p><code>fileName</code> :</p>
+<ul>
+<li>Type : String</li>
+<li>Purpose : To store filename of uploaded video</li>
+<li>Default Value : Empty String</li>
+</ul>
+</li>
+<li>
+<p><code>uploadDisabled</code> : </p>
+<ul>
+<li>Type : Boolean</li>
+<li>Purpose : To show whether upload button is disabled or not</li>
+<li>Default value : <code>false</code></li>
+</ul>
+</li>
+<li>
+<p><code>fileSize</code> : </p>
+<ul>
+<li>Type : Integer</li>
+<li>Purpose : To store size of file</li>
+<li>Default value : 0</li>
+</ul>
+</li>
+<li>
+<p><code>inputSpeedForm</code> :</p>
+<ul>
+<li>Type : FormGroup</li>
+<li>Purpose : Form for taking speed limit as input</li>
+<li>Default value : None</li>
+</ul>
+</li>
+<li>
+<p><code>roadLendthForm</code> : </p>
+<ul>
+<li>Type : FormGroup</li>
+<li>Purpose : Form for taking road length as input</li>
+<li>Default value : None</li>
+</ul>
+</li>
+<li>
+<p><code>speedlimit</code> : </p>
+<ul>
+<li>Type : Integer</li>
+<li>Purpose : Speedlimit </li>
+<li>Default Value : 100</li>
+</ul>
+</li>
+<li>
+<p><code>roadLendth</code> : </p>
+<ul>
+<li>Type : Integer</li>
+<li>Purpose : To store approximate lenght of road in metres</li>
+<li>Default Value : 0</li>
+</ul>
+</li>
+</ol>
+<h3 id="modules_1">Modules</h3>
+<ol>
+<li>
+<p><code>@angular/common/http</code> :</p>
+<ul>
+<li>Purpose : To make HTTP requests including posting videos and parameters</li>
+</ul>
+</li>
+<li>
+<p><code>rxjs/operators</code> : </p>
+<ul>
+<li>Purpose : To extend timeout period of HTTP requests to ensure that </li>
+</ul>
+</li>
+</ol>
+<h2 id="video-streaming-component">Video Streaming Component</h2>
+<h3 id="objectives_2">Objectives</h3>
+<ol>
+<li>Render video from backend onto frontend</li>
+<li>Reload appropriate video based on feature selected</li>
+</ol>
+<h3 id="functions_2">Functions</h3>
+<ol>
+<li><code>reload(feature)</code>:<ul>
+<li>Input : Rule breaking feature selected</li>
+<li>Trigger : User clicking radio button of a traffic rule feature</li>
+<li>Purpose : To change the video based on traffic rule selected</li>
+<li>Output : None</li>
+</ul>
+</li>
+</ol>
+<h3 id="variables_2">Variables</h3>
+<ol>
+<li>
+<p><code>videoelement</code> : </p>
+<ul>
+<li>Type : HTMLVideoElement</li>
+<li>Purpose : Based on feature selected, reloading video</li>
+<li>Default Value : None</li>
+</ul>
+</li>
+<li>
+<p><code>base</code> : </p>
+<ul>
+<li>Type : String</li>
+<li>Purpose : Base url from where to retrieve video</li>
+<li>Default Value : '/api/getvideo/'</li>
+</ul>
+</li>
+<li>
+<p><code>url</code> :</p>
+<ul>
+<li>Type : String</li>
+<li>Purpose : Final url from where to retrieve video</li>
+<li>Default Value : '/api/getvideo/'</li>
+</ul>
+</li>
+<li>
+<p><code>state</code> : </p>
+<ul>
+<li>Type : Boolean</li>
+<li>Purpose : Global application state binded to parent, to show whether to render application or not</li>
+<li>Default Value : Same as Parent</li>
+</ul>
+</li>
+</ol>
+<h3 id="modules_2">Modules</h3>
+<ol>
+<li><code>@angular/core/Input</code> :<ul>
+<li>Purpose : To bind a variable to parent component variable</li>
+</ul>
+</li>
+</ol>
+<h2 id="snapshots-rendering-component">Snapshots Rendering Component</h2>
+<h3 id="objectives_3">Objectives</h3>
+<ol>
+<li>Retrieve images corresponding to a particular feature</li>
+<li>Render images with a scrollbar</li>
+</ol>
+<h3 id="functions_3">Functions</h3>
+<ol>
+<li><code>reload(feature)</code>:<ul>
+<li>Input : Rule breaking feature selected</li>
+<li>Trigger : User clicking radio button of a traffic rule feature</li>
+<li>Purpose : To change the images based on traffic rule selected</li>
+<li>Output : None</li>
+</ul>
+</li>
+</ol>
+<h3 id="variables_3">Variables</h3>
+<ol>
+<li>
+<p><code>imagesList</code> :</p>
+<ul>
+<li>Type : Array</li>
+<li>Purpose : To store list of images to render on the component</li>
+<li>Default Value : Empty Array</li>
+</ul>
+</li>
+<li>
+<p><code>feature</code> : </p>
+<ul>
+<li>Type : String</li>
+<li>Purpose : Global variable to store feature, corresponding to that feature images will be rendered</li>
+<li>Default Value : 'default'</li>
+</ul>
+</li>
+<li>
+<p><code>state</code> : </p>
+<ul>
+<li>Type : Boolean</li>
+<li>Purpose : Global application state binded to parent, to show whether to render images or not</li>
+<li>Default Value : Same as Parent</li>
+</ul>
+</li>
+</ol>
+<h3 id="modules_3">Modules</h3>
+<ol>
+<li><code>@angular/common/http</code> :<ul>
+<li>Purpose : To make HTTP request to retrieve images from backend</li>
+</ul>
+</li>
+</ol>
+<h2 id="radio-buttons-component">Radio buttons component</h2>
+<h3 id="objectives_4">Objectives</h3>
+<ol>
+<li>Provide user with radio buttons for easy navigation between different features</li>
+<li>Based on radio button selected reload video streaming and rendering snapshots</li>
+</ol>
+<h3 id="functions_4">Functions</h3>
+<ol>
+<li><code>handleClick(event)</code>:<ul>
+<li>Input : Rule breaking feature selected wrapped in an event</li>
+<li>Trigger : User clicking radio button of a traffic rule feature</li>
+<li>Purpose : To invoke reload functions in snapshot and video components</li>
+<li>Output : None</li>
+</ul>
+</li>
+</ol>
+<h3 id="variables_4">Variables</h3>
+<ol>
+<li>
+<p><code>refreshEvent</code> :</p>
+<ul>
+<li>Type : EventEmitter</li>
+<li>Purpose : Event Emitter, binded with parent</li>
+<li>Default Value : None</li>
+</ul>
+</li>
+<li>
+<p><code>feature</code> : </p>
+<ul>
+<li>Type : String</li>
+<li>Purpose : Global variable to store feature, that feature will be passed to snapshots and video components</li>
+<li>Default Value : 'default'</li>
+</ul>
+</li>
+<li>
+<p><code>state</code> : </p>
+<ul>
+<li>Type : Boolean</li>
+<li>Purpose : Global application state binded to parent, to show whether to render images/video or not</li>
+<li>Default Value : Same as Parent</li>
+</ul>
+</li>
+</ol>
+<h3 id="modules_4">Modules</h3>
+<ol>
+<li>
+<p><code>@angular/common/http</code> :</p>
+<ul>
+<li>Purpose : To make HTTP request to retrieve images from backend</li>
+</ul>
+</li>
+<li>
+<p><code>@angular/core/EventEmitter</code> :</p>
+<ul>
+<li>Purpose : Binding variables from parent to child components</li>
+</ul>
+</li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../design/" title="Design of the application" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Design of the application
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../backend/" title="Backend Server" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Backend Server
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.3636a4ec.min.js"></script>
+      <script src="../assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
