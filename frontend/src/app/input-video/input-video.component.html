@@ -9,7 +9,7 @@
             <button class="btn btn-primary" id="btnUpload" (click)="fileInput.click()" [disabled]="uploadDisabled == true">Upload</button>
           </div>
           <div style="display: none;">
-            <form action="https://smart-traffic-backend.herokuapp.com/api/postvideo" method="post" enctype="multipart/form-data">
+            <form action="/api/postvideo" method="post" enctype="multipart/form-data">
               <input (change)="fileChange($event)" #fileInput type="file" accept="video/*">
             </form>
           </div>

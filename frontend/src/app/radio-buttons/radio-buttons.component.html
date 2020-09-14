@@ -1,5 +1,5 @@
 <div class="radio-form" *ngIf="state">
-  <form form action="https://smart-traffic-backend.herokuapp.com/api/postfeature" method="post" name="featureForm">
+  <form form action="/api/postfeature" method="post" name="featureForm">
     <div class="form-check form-check-inline radio-div">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="default" (click)="handleClick($event);">
         <label class="form-check-label" for="inlineRadio5">All</label>
