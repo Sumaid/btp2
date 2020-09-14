@@ -9,7 +9,7 @@ Code : [Github code link](https://github.com/Sumaid/btp2)
 
 Documentation : [Github Pages Website](https://sumaid.github.io/btp2/)
 
-Test Examples : [Google Drive Link](https://drive.google.com/drive/folders/1wNyDH-QYIKb3qiapTXY0FPW1aNNNecij?usp=sharing)
+Test Video Examples : [Google Drive Link](https://drive.google.com/drive/folders/10w9AgAyM6ImLYbiyJKuyXEGg-glvu6vw?usp=sharing)
 
 ## Overview
 
