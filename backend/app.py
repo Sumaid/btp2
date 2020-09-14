@@ -32,6 +32,7 @@ from flask_cors import CORS, cross_origin
 
 LOG = logging.getLogger(__name__)
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 PORT = int(os.getenv('PORT')) if os.getenv('PORT') else 8081
@@ -201,7 +202,12 @@ def getImage():
     feature = request.args.get('feature')
     filename = request.args.get('filename')
     imagesPath = './%s/images/' % (feature)
-    response = send_from_directory(imagesPath, filename, as_attachment=True)
+    response = send_from_directory(imagesPath, filename, as_attachment=True, cache_timeout=0)
+    response.cache_control.max_age = 0
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    response.headers['Cache-Control'] = 'public, max-age=0'
     return response
     
 @app.route('/api/getvideo/<path:feature>')
