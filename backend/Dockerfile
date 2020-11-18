@@ -43,7 +43,7 @@ EXPOSE 8081
 # set working directory
 ADD . /app
 WORKDIR /app
-RUN apt-get install -y ipython3 build-essential python-dev python3-dev
+# RUN apt-get install -y ipython3 build-essential python-dev python3-dev
 # install required libraries
 RUN pip3 install -r requirements.txt
 

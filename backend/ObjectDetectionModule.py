@@ -121,7 +121,7 @@ class ObjectDetectionModule(RuleProcessor):
         final_class_labels = []
         final_confidence_list = []
         
-        if index_list.size:
+        if len(index_list):
             for i in index_list.flatten():
                 box_width, box_height = boxes[i][2], boxes[i][3]
                 

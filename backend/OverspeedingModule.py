@@ -67,52 +67,54 @@ class OverspeedingModule(RuleProcessor):
             detected_object_boxes, labels, confidences = self.objectDetector.detect_objects_in_frame(current_frame)
             detected_object_boxes = np.array(detected_object_boxes)
             confidences_np_array = np.array([confidences]).T
-            
-            tracker_input = np.append(detected_object_boxes, confidences_np_array, axis=1)
-            time_tracked_objects = self.tracker.update(tracker_input)
-            
-            box_list = []
-            box_indexID = []
-            
-            previous_memory = memory.copy()
-            memory = {}
+            try:
+                tracker_input = np.append(detected_object_boxes, confidences_np_array, axis=1)
+                time_tracked_objects = self.tracker.update(tracker_input)
+                
+                box_list = []
+                box_indexID = []
+                
+                previous_memory = memory.copy()
+                memory = {}
 
-            i = 0
-            
-            for track in time_tracked_objects:
-                box_list.append([track[0], track[1], track[2], track[3]])
-                box_indexID.append(int(track[4]))
-                memory[box_indexID[-1]] = box_list[-1]
-    
-            for box in box_list:
-                box = [int(box_detail) for box_detail in box]
-                box_center = self.get_center_of_box(box)
+                i = 0
                 
-                current_id = box_indexID[i]
-                
-                if current_id in previous_memory:
-                    previous_box = previous_memory[current_id]
+                for track in time_tracked_objects:
+                    box_list.append([track[0], track[1], track[2], track[3]])
+                    box_indexID.append(int(track[4]))
+                    memory[box_indexID[-1]] = box_list[-1]
+        
+                for box in box_list:
+                    box = [int(box_detail) for box_detail in box]
+                    box_center = self.get_center_of_box(box)
                     
-                    box_previous_center = self.get_center_of_box(previous_box)
-                    car_track_line = (box_center, box_previous_center)
-
-                    if check_line_intersection(car_track_line, self.speed_start_line):
-                        measure_time_start = current_frame_number
-                        self.time_tracker.update({current_id: measure_time_start})
+                    current_id = box_indexID[i]
+                    
+                    if current_id in previous_memory:
+                        previous_box = previous_memory[current_id]
                         
-                    elif check_line_intersection(car_track_line, self.speed_end_line):
-                        try:
-                            frames_taken = current_frame_number - self.time_tracker.get(current_id)
-                            speed = self.calculate_speed(frames_taken)
-                            if speed > self.speed_limit:
-                                print("Yes")
-                                self.add_snapshot(current_frame, box, speed, current_frame_number)
-                            del self.time_tracker[current_id]
-                        except:
-                            pass
-                i += 1
-            current_frame_number += 1
-            self.output_video_data.append(current_frame)
+                        box_previous_center = self.get_center_of_box(previous_box)
+                        car_track_line = (box_center, box_previous_center)
+
+                        if check_line_intersection(car_track_line, self.speed_start_line):
+                            measure_time_start = current_frame_number
+                            self.time_tracker.update({current_id: measure_time_start})
+                            
+                        elif check_line_intersection(car_track_line, self.speed_end_line):
+                            try:
+                                frames_taken = current_frame_number - self.time_tracker.get(current_id)
+                                speed = self.calculate_speed(frames_taken)
+                                if speed > self.speed_limit:
+                                    print("Yes")
+                                    self.add_snapshot(current_frame, box, speed, current_frame_number)
+                                del self.time_tracker[current_id]
+                            except:
+                                pass
+                    i += 1
+                current_frame_number += 1
+                self.output_video_data.append(current_frame)
+            except:
+                pass
     
     def get_center_of_box(self, box):
         box_center_x = np.mean((box[0], box[2]))
