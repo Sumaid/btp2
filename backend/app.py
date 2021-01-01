@@ -14,6 +14,7 @@ import json
 import pprint
 import glob
 from datetime import datetime
+import requests
 
 import mimetypes
 from flask import Response, render_template
@@ -75,6 +76,33 @@ def createDirectories():
             os.mkdir(dr+'/images')
         if not 'video' in os.listdir(dr):
             os.mkdir(dr+'/video')
+
+def ocr_vehicle(filename):
+    url = "https://cloud.eyedea.cz/api/v2/cardetect.json"
+
+    payload = {'email': 'rohan27bhandari@outlook.com',
+    'password': '1199efa85',
+    'Content-type': 'image/jpeg'}
+    files = [
+    ('upload', open(filename, 'rb'))
+    ]
+    headers= {}
+
+    response = requests.request("POST", url, headers=headers, data = payload, files = files)
+    json_data =  json.loads(response.text.encode('utf8'))
+    message = None
+    try:
+        message = 'License Plate(s) detected: '
+        initial_str = message
+        for car in json_data['photos'][0]['tags']:
+            message += car['lp_text_content'] + ', '
+        if message == initial_str:
+            return 'Car number plates not detected'
+        message = message[:-2]
+    except:
+        message = 'Car number plates not detected'
+    return message
+
 
 @app.route('/api/postvideo', methods=['POST'])
 @cross_origin()
@@ -180,7 +208,8 @@ def listImages(feature):
             path = os.path.join(images_path, filename)
             if os.path.isfile(path):
                 if filename[0] != '.':
-                    files.append('/api/getimage?feature={}&filename={}'.format(feature,filename))
+                    caption = ocr_vehicle(feature + '/images/' + filename)
+                    files.append('/api/getimage?feature={}&filename={}&caption={}'.format(feature,filename, caption))
     else:
         for feature in rule_list:
             images_path = './%s/images/' % (feature)
@@ -191,7 +220,8 @@ def listImages(feature):
                 path = os.path.join(images_path, filename)
                 if os.path.isfile(path):
                     if filename[0] != '.':
-                        files.append('/api/getimage?feature={}&filename={}'.format(feature,filename))
+                        caption = ocr_vehicle(feature + '/images/' + filename) 
+                        files.append('/api/getimage?feature={}&filename={}&caption={}'.format(feature,filename, caption))
     response = jsonify(files)
     return response
 
