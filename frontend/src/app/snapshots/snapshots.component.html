@@ -1,3 +1,6 @@
 <div class='gallery' *ngIf="state">
     <img *ngFor="let image of imageslist" src={{image}} class="imageclass">
+    <div class="text-block">
+        <h6 *ngFor="let caption of captions">{{caption}}</h6>
+    </div>
 </div>
