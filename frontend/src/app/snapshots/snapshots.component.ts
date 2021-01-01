@@ -18,6 +18,7 @@ const httpOptions = {
 export class SnapshotsComponent implements OnInit {
   imageslist: Array<string>;
   currentList: Array<string>;
+  captions: Array<string> = [];
   feature = 'default';
   @Input() state: boolean;
   constructor(private http: HttpClient) {
@@ -33,7 +34,12 @@ export class SnapshotsComponent implements OnInit {
     .subscribe((response) => {
       this.imageslist = response as Array<string>;
       console.log('response received is ', this.imageslist);
+      this.imageslist.forEach(element => {
+        let start = element.indexOf('caption=');
+        start += 8;
+        this.captions.push(element.substring(start));
+      });
+      console.log(this.captions);
     });
   }
 }
-
